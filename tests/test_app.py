@@ -13,7 +13,7 @@ def driver():
     process = subprocess.Popen(["streamlit", "run", "app/app.py"])
 
     # We need define out driver
-    driver = webdriver.Edge()
+    driver = webdriver.Firefox()
     driver.set_page_load_timeout(5)
     yield driver
 
