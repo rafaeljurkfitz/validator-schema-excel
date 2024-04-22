@@ -2,7 +2,6 @@ import streamlit as st
 
 
 class ExcelValidadorUI:
-
     def __init__(self):
         self.set_page_config()
 
