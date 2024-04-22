@@ -7,15 +7,14 @@ from time import sleep
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
 
 
 @pytest.fixture
 def driver():
     # Start the Streamlit in background
     process = subprocess.Popen(["streamlit", "run", "app/app.py"])
-    options = Options()
     # Execute in mode headless
+    options = webdriver.FirefoxOptions()
     options.headless = True
     # We need define out driver
     driver = webdriver.Firefox(options=options)
