@@ -9,7 +9,7 @@ class ExcelValidadorUI:
         st.set_page_config(page_title="Validador de schema excel")
 
     def display_header(self):
-        st.title("Validador de schema excel")
+        st.title("Insira o seu excel para validação.")
 
     def upload_file(self):
         return st.file_uploader("Carregue seu arquivo Excel aqui", type=["xlsx"])
