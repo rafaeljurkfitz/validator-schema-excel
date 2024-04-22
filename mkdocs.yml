@@ -1,1 +1,20 @@
-site_name: My Docs
+site_name: My Library
+theme:
+  name: material
+  palette:
+    primary: red
+  language: en
+
+repo_name: "rafaeljurkfitz/validator-schema-excel"
+repo_url: "https://github.com/rafaeljurkfitz/validator-schema-excel"
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+      - name: mermaid
+        class: mermaid
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
