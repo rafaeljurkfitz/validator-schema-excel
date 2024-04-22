@@ -15,7 +15,7 @@ def driver():
     process = subprocess.Popen(["streamlit", "run", "app/app.py"])
     # Execute in mode headless
     options = webdriver.FirefoxOptions()
-    options.headless = True
+    options.add_argument("-headless")
     # We need define out driver
     driver = webdriver.Firefox(options=options)
     driver.set_page_load_timeout(5)

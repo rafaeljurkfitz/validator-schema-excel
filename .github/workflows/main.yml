@@ -21,12 +21,5 @@ jobs:
       - name: Install dependencies with poetry
         run: poetry install
 
-      - name: Install GeckoDriver
-        run: |
-          wget https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux64.tar.gz
-          tar -xzf geckodriver-v0.34.0-linux64.tar.gz
-          chmod +x geckodriver
-          mv geckodriver /usr/local/bin/
-
       - name: Run pytest
         run: poetry run pytest
