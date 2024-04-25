@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: db-pgsql
     steps:
       - name: Check out code
         uses: actions/checkout@v2
