@@ -23,6 +23,7 @@ load_dotenv()
 def process_excel(uploaded_file):
     try:
         df = pd.read_excel(uploaded_file)
+        errors = []
 
         # Verificar se há colunas extras no DataFrame
         extra_cols = set(df.columns) - set(Sales.model_fields.keys())
@@ -34,15 +35,14 @@ def process_excel(uploaded_file):
             try:
                 _ = Sales(**row.to_dict())
             except Exception as e:
-                raise ValueError(f"Erro na linha {index + 2}: {e}")
+                errors.append(f"Erro na linha {index + 2}: {e}")
 
         # Retorna tanto o resultado da validação, os erros, quanto o DataFrame
-        return df, True, None
+        return df, True, errors
 
-    except ValueError as ve:
-        return df, False, str(ve)
     except Exception as e:
-        return df, False, f"Erro inesperado: {str(e)}"
+        # Se houver exceção, retorna o erro e um DataFrame vazio
+        return pd.DataFrame(), f"Erro inesperado: {str(e)}"
 
 
 def save_dataframe_to_sql(df):
