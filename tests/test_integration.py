@@ -1,3 +1,6 @@
+"""Testes de integração.
+    """
+
 import os
 
 import pandas as pd
@@ -17,6 +20,14 @@ DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST
 
 
 def test_read_data_and_check_schema():
+    """Testa a leitura dos dados e verifica o schema do DataFrame.
+
+    Este teste verifica se os dados estão sendo lidos corretamente e se o schema do DataFrame está correto.
+
+    Returns:
+        _type_: _description_
+    """
+
     df = pd.read_sql("SELECT * FROM sales", con=DATABASE_URL)
 
     # Verificar se o DataFrame não está vazio

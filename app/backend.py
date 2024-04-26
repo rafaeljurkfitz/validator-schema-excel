@@ -1,3 +1,5 @@
+"""Módulo responsável por processar o arquivo Excel e salvar no banco de dados."""
+
 import os
 
 import pandas as pd
@@ -21,6 +23,14 @@ load_dotenv()
 
 
 def process_excel(uploaded_file):
+    """Processa o arquivo Excel e retorna o DataFrame com os dados, o resultado da validação e os erros encontrados.
+
+    Args:
+        uploaded_file (str): Caminho do arquivo Excel a ser processado.
+
+    Returns:
+        Tuple[pd.DataFrame, bool, List[str]]: Retorna um DataFrame com os dados do arquivo Excel, um booleano indicando se a validação foi bem-sucedida e uma lista de erros encontrados.
+    """
     try:
         df = pd.read_excel(uploaded_file)
         errors = []
@@ -46,5 +56,13 @@ def process_excel(uploaded_file):
 
 
 def save_dataframe_to_sql(df):
+    """Salva o DataFrame no banco de dados.
+
+    Args:
+        df (pd.DataFrame): DataFrame a ser salvo no banco de dados.
+
+    Returns:
+        None
+    """
     # Salva o DataFrame no banco de dados
     df.to_sql("sales", con=DATABASE_URL, if_exists="replace", index=False)

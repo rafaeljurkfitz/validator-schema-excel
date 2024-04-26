@@ -1,3 +1,5 @@
+"""Módulo principal do programa."""
+
 import logging
 import os
 
@@ -21,6 +23,14 @@ sentry_sdk.init(
 
 
 def main():
+    """
+    Função principal que chama a interface gráfica e processa o arquivo excel.
+
+    A função main é responsável por iniciar a execução do programa. Ela chama a classe ExcelValidadorUI para exibir a interface gráfica,
+    permite ao usuário fazer o upload de um arquivo excel e processa esse arquivo utilizando a função process_excel.
+    Em seguida, exibe os resultados na interface gráfica e, se não houver erros, permite ao usuário salvar os dados em um banco de dados.
+    A função também registra mensagens de erro ou sucesso utilizando a biblioteca sentry_sdk e o módulo logging.
+    """
     ui = ExcelValidadorUI()
     ui.display_header()
 
@@ -43,4 +53,5 @@ def main():
 
 
 if __name__ == "__main__":
+    """Executa a função main quando o módulo é executado diretamente."""
     main()

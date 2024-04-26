@@ -1,3 +1,5 @@
+""" This module contains the unit tests for the Sales class."""
+
 from datetime import datetime
 
 import pytest
@@ -8,6 +10,10 @@ from app.contract import Sales
 
 # Test with valid data
 def test_sales_with_valid_data():
+    """Test the Sales class with valid data.
+
+    This test verifies if the Sales class can be instantiated with valid data.
+    """
     data_valid = {
         "email": "comprador@example.com",
         "data": datetime.now(),
@@ -32,6 +38,13 @@ def test_sales_with_valid_data():
 
 # Test with invalid data
 def test_sales_with_invalid_data():
+    """Test the Sales class with invalid data.
+
+    This test verifies if the Sales class raises a ValidationError when instantiated with invalid data.
+
+    Raises:
+        ValidationError: If the Sales class is instantiated with invalid data.
+    """
     data_invalid = {
         "email": "comprador",
         "data": "não é uma data",
@@ -47,6 +60,13 @@ def test_sales_with_invalid_data():
 
 # Category Validation Test
 def test_category_validation():
+    """Test the category validation.
+
+    This test verifies if the Sales class raises a ValidationError when instantiated with an invalid category.
+
+    Raises:
+        ValidationError: If the Sales class is instantiated with an invalid category.
+    """
     data = {
         "email": "comprador@example.com",
         "data": datetime.now(),
