@@ -6,7 +6,7 @@ Este é um projeto em Python que oferece uma aplicação web usando Streamlit co
 
 ## Deploy
 
-https://validator-schema-excel-yn8pdttx5ciq69gn3xejsv.streamlit.app/
+[![](https://img.shields.io/badge/Launch-Cloud%20Instance-brightgreen?style=for-the-badge)](https://validator-schema-excel-yn8pdttx5ciq69gn3xejsv.streamlit.app/)
 
 ## Database
 
