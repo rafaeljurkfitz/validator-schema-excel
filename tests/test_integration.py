@@ -24,8 +24,9 @@ def test_read_data_and_check_schema():
 
     Este teste verifica se os dados estão sendo lidos corretamente e se o schema do DataFrame está correto.
 
-    Returns:
-        _type_: _description_
+    Asserts:
+        O DataFrame não deve estar vazio.
+        O schema do DataFrame deve corresponder ao esperado.
     """
 
     df = pd.read_sql("SELECT * FROM sales", con=DATABASE_URL)

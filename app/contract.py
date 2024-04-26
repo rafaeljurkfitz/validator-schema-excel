@@ -24,13 +24,13 @@ class Sales(BaseModel):
     """
     Modelo de dados para as vendas.
 
-    Args:
+    Atributos:
         email (EmailStr): email do comprador
         data (datetime): data da compra
         valor (PositiveFloat): valor da compra
-        quantidade (PositiveInt): nome do produto
-        produto (str): quantidade de produtos
-        categoria: (CategoriaEnum): categoria do produto
+        quantidade (PositiveInt): quantidade de produtos
+        produto (str): nome do produto
+        categoria (CategoriaEnum): categoria do produto
     """
 
     email: EmailStr
@@ -41,7 +41,7 @@ class Sales(BaseModel):
     categoria: CategoriaEnum
 
     @field_validator("categoria")
-    def categoria_deve_estar_no_enum(cls, error):
+    def categoria_deve_estar_no_enum(cls: type, error: str) -> str:
         """Valida se a categoria está no Enum.
 
         Args:

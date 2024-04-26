@@ -13,6 +13,18 @@ def test_sales_with_valid_data():
     """Test the Sales class with valid data.
 
     This test verifies if the Sales class can be instantiated with valid data.
+
+    Asserts:
+        The Sales class should be instantiated with the following attributes:
+            email
+            data
+            valor
+            produto
+            quantidade
+            categoria
+
+    Raises:
+        AssertionError: If the Sales class is not instantiated with valid data.
     """
     data_valid = {
         "email": "comprador@example.com",

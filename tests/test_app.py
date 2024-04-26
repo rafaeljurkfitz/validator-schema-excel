@@ -17,7 +17,7 @@ def driver():
     This fixture starts the Streamlit app in the background and the WebDriver in headless mode.
 
     Yields:
-        WebDriver: The WebDriver instance.
+        driver (WebDriver): The WebDriver instance.
     """
     # Start the Streamlit in background
     process = subprocess.Popen(["streamlit", "run", "app/app.py"])
@@ -54,6 +54,9 @@ def test_check_title_is(driver: WebDriver):
 
     Args:
         driver (WebDriver): The WebDriver instance.
+
+    Asserts:
+        The title should be "Validador de schema excel". If the title is not the expected, the test will fail.
     """
     # Verify if the page opens
     driver.get("http://localhost:8501")
@@ -76,6 +79,9 @@ def test_check_streamlit_h1(driver: WebDriver):
 
     Args:
         driver (WebDriver): The WebDriver instance.
+
+    Asserts:
+        The h1 should be "Insira o seu excel para validação.". If the h1 is not the expected, the test will fail.
     """
     # Verify if the page opens
     driver.get("http://localhost:8501")
@@ -98,6 +104,9 @@ def test_check_user_can_insert_a_excel_and_receive_a_message(driver: WebDriver):
 
     Args:
         driver (WebDriver): The WebDriver instance.
+
+    Asserts:
+        The message "O schema do arquivo Excel está correto!" should be displayed. If the message is not displayed, the test will fail.
     """
 
     # Verify if the page opens

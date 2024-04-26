@@ -31,9 +31,6 @@ class ExcelValidadorUI:
         """Exibe o botão de upload de arquivo Excel.
 
         A função upload_file é responsável por exibir o botão de upload de arquivo Excel e retornar o arquivo carregado pelo usuário.
-
-        Returns:
-            BytesIO: Arquivo Excel carregado pelo usuário.
         """
         return st.file_uploader("Carregue seu arquivo Excel aqui", type=["xlsx"])
 
@@ -56,9 +53,6 @@ class ExcelValidadorUI:
         """Exibe o botão para salvar no banco de dados.
 
         A função display_save_button é responsável por exibir o botão para salvar os dados no banco de dados.
-
-        Returns:
-            bool: Retorna True se o botão foi clicado, caso contrário, False.
         """
         return st.button("Salvar no Banco de Dados")
 
@@ -66,9 +60,6 @@ class ExcelValidadorUI:
         """Exibe uma mensagem de erro.
 
         A função display_wrong_message é responsável por exibir uma mensagem de erro na tela.
-
-        Returns:
-            _type_: _description_
         """
         return st.error("Necessário corrigir a planilha!")
 
@@ -76,8 +67,5 @@ class ExcelValidadorUI:
         """Exibe uma mensagem de sucesso.
 
         A função display_success_message é responsável por exibir uma mensagem de sucesso na tela.
-
-        Returns:
-            _type_: _description_
         """
         return st.success("Dados salvos com sucesso no banco de dados!")

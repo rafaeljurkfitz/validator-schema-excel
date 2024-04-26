@@ -29,7 +29,10 @@ def process_excel(uploaded_file):
         uploaded_file (str): Caminho do arquivo Excel a ser processado.
 
     Returns:
-        Tuple[pd.DataFrame, bool, List[str]]: Retorna um DataFrame com os dados do arquivo Excel, um booleano indicando se a validação foi bem-sucedida e uma lista de erros encontrados.
+        `dict`:
+            dataframe (pd.DataFrame): Um DataFrame pandas contendo os dados do arquivo Excel.
+            validacao_sucedida (bool): Um booleano indicando se a validação foi bem-sucedida.
+            erros (List[str]): Uma lista de strings contendo os erros encontrados durante a validação.
     """
     try:
         df = pd.read_excel(uploaded_file)
@@ -55,7 +58,7 @@ def process_excel(uploaded_file):
         return pd.DataFrame(), f"Erro inesperado: {str(e)}"
 
 
-def save_dataframe_to_sql(df):
+def save_dataframe_to_sql(df: pd.DataFrame) -> None:
     """Salva o DataFrame no banco de dados.
 
     Args:
