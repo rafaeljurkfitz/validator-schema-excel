@@ -53,5 +53,4 @@ def main():
 
 
 if __name__ == "__main__":
-    """Executa a função main quando o módulo é executado diretamente."""
     main()
