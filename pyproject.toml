@@ -9,20 +9,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "3.12.3"
 openpyxl = "^3.1.2"
-pytest = "^8.1.1"
-isort = "^5.13.2"
-taskipy = "^1.12.2"
-mkdocs = "^1.5.3"
-mkdocstrings-python = "^1.10.0"
-pygments = "^2.17.2"
-pymdown-extensions = "^10.8"
-mkdocs-bootstrap386 = "^0.0.2"
-pre-commit = "^3.7.0"
-pip-audit = "^2.7.2"
-pydocstyle = "^6.3.0"
-mkdocs-material = "^9.5.18"
-black = "^24.4.0"
-selenium = "^4.19.0"
 streamlit = "^1.33.0"
 pandas = "^2.2.2"
 numpy = "^1.26.4"
@@ -34,6 +20,27 @@ sentry-sdk = "^2.0.0"
 
 [tool.poetry.group.dev.dependencies]
 psycopg2 = "^2.9.9"
+taskipy = "^1.12.2"
+pre-commit = "^3.7.0"
+pip-audit = "^2.7.2"
+isort = "^5.13.2"
+black = "^24.4.2"
+pydocstyle = "^6.3.0"
+
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.2.0"
+selenium = "^4.20.0"
+
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.6.0"
+mkdocstrings-python = "^1.10.0"
+pygments = "^2.17.2"
+pymdown-extensions = "^10.8.1"
+mkdocs-bootstrap386 = "^0.0.2"
+mkdocs-material = "^9.5.19"
 
 [build-system]
 requires = ["poetry-core"]
