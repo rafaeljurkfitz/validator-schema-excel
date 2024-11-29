@@ -29,10 +29,10 @@ def process_excel(uploaded_file: any) -> dict:
         uploaded_file (str): Caminho do arquivo Excel a ser processado.
 
     Returns:
-        `dict`:
-            dataframe (pd.DataFrame): Um DataFrame pandas contendo os dados do arquivo Excel.
-            validacao_sucedida (bool): Um booleano indicando se a validação foi bem-sucedida.
-            erros (List[str]): Uma lista de strings contendo os erros encontrados durante a validação.
+        dict: ```Um dicionário contendo o DataFrame com os dados, o resultado da validação e os erros encontrados.```
+        dataframe (pd.DataFrame): Um DataFrame pandas contendo os dados do arquivo Excel.
+        validacao_sucedida (bool): Um booleano indicando se a validação foi bem-sucedida.
+        erros (List[str]): Uma lista de strings contendo os erros encontrados durante a validação.
     """
     try:
         df = pd.read_excel(uploaded_file)

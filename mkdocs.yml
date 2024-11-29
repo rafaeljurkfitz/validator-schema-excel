@@ -1,9 +1,9 @@
-site_name: My Library
+site_name: Validator Schema Excel
 theme:
   name: material
   palette:
     primary: red
-  language: en
+  language: pt-br
 
 repo_name: "rafaeljurkfitz/validator-schema-excel"
 repo_url: "https://github.com/rafaeljurkfitz/validator-schema-excel"

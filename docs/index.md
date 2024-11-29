@@ -1,5 +1,3 @@
-# Bem vindo a Documentação no MkDocs
-
-## App
+# App
 
 ::: app.app.main
