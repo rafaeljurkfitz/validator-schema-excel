@@ -30,7 +30,7 @@ class Sales(BaseModel):
         valor (PositiveFloat): valor da compra
         quantidade (PositiveInt): quantidade de produtos
         produto (str): nome do produto
-        categoria (CategoriaEnum): categoria do produto
+        categoria (str): categoria do produto Enum(categoria1, categoria2, categoria3)
     """
 
     email: EmailStr
