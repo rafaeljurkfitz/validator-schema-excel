@@ -24,7 +24,7 @@ class Sales(BaseModel):
     """
     Modelo de dados para as vendas.
 
-    Atributos:
+    Args:
         email (EmailStr): email do comprador
         data (datetime): data da compra
         valor (PositiveFloat): valor da compra

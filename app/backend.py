@@ -22,7 +22,7 @@ DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST
 load_dotenv()
 
 
-def process_excel(uploaded_file):
+def process_excel(uploaded_file: any) -> dict:
     """Processa o arquivo Excel e retorna o DataFrame com os dados, o resultado da validação e os erros encontrados.
 
     Args:

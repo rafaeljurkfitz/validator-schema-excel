@@ -12,12 +12,12 @@ load_dotenv(".env")
 
 sentry_sdk.init(
     dsn=os.getenv("SENTRY_DNS"),
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
+    # * Set traces_sample_rate to 1.0 to capture 100%
+    # * of transactions for performance monitoring.
     traces_sample_rate=1.0,
-    # Set profiles_sample_rate to 1.0 to profile 100%
-    # of sampled transactions.
-    # We recommend adjusting this value in production.
+    # * Set profiles_sample_rate to 1.0 to profile 100%
+    # * of sampled transactions.
+    # * We recommend adjusting this value in production.
     profiles_sample_rate=1.0,
 )
 
@@ -26,10 +26,11 @@ def main():
     """
     Função principal que chama a interface gráfica e processa o arquivo excel.
 
-    A função main é responsável por iniciar a execução do programa. Ela chama a classe ExcelValidadorUI para exibir a interface gráfica,
-    permite ao usuário fazer o upload de um arquivo excel e processa esse arquivo utilizando a função process_excel.
+    A função main é responsável por iniciar a execução do programa. Ela chama a classe ```ExcelValidadorUI``` para exibir a interface gráfica, permite ao usuário fazer o upload de um arquivo excel e processa esse arquivo utilizando a função ***process_excel***.
+
     Em seguida, exibe os resultados na interface gráfica e, se não houver erros, permite ao usuário salvar os dados em um banco de dados.
-    A função também registra mensagens de erro ou sucesso utilizando a biblioteca sentry_sdk e o módulo logging.
+
+    A função também registra mensagens de erro ou sucesso utilizando a ```biblioteca sentry_sdk``` e o ```módulo logging```.
     """
     ui = ExcelValidadorUI()
     ui.display_header()
