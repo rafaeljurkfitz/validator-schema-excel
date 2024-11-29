@@ -1,4 +1,4 @@
-""" test app """
+""" Testes Funcionais """
 
 import os
 import subprocess
@@ -12,114 +12,111 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 
 @pytest.fixture
 def driver():
-    """Fixture to start the Streamlit app and the WebDriver.
+    """Dispositivo de teste(fixture)  para iniciar o aplicativo Straemlit e o WebDriver
 
-    This fixture starts the Streamlit app in the background and the WebDriver in headless mode.
+    Essa fixture começa o aplicativo Streamlit no background e o WebDriver em modo headless.
 
     Yields:
-        driver (WebDriver): The WebDriver instance.
+        driver (WebDriver): A instância WebDriver.
     """
-    # Start the Streamlit in background
+    # Começa o Streamlit no background
     process = subprocess.Popen(["streamlit", "run", "app/app.py"])
-    # Execute in mode headless
+    # Executa no modo headless
     options = webdriver.FirefoxOptions()
     options.add_argument("-headless")
-    # We need define out driver
+    # Precisamos definir o driver
     driver = webdriver.Firefox(options=options)
     driver.set_page_load_timeout(5)
     yield driver
 
-    # Close the WebDriver and the Streamlit after the tests
+    # Fecha o WebDriver e o Streamlit depois dos testes
     driver.quit()
     process.kill()
 
 
 def test_app_opens(driver: WebDriver):
-    """Test if the app opens.
+    """Testa se o aplicativo abre.
 
-    This test verifies if the app opens.
+    Este teste verifica se o aplicativo abre.
 
     Args:
-        driver (WebDriver): The WebDriver instance.
+        driver (WebDriver): A instância WebDriver.
     """
-    # Verify if the page opens
     driver.get("http://localhost:8501")
     sleep(2)
 
 
 def test_check_title_is(driver: WebDriver):
-    """Test if the title is correct.
+    """Testa se o título da página está correto.
 
-    This test verifies if the title of the page is correct.
+    Este teste verifica se o título da página está correto.
 
     Args:
-        driver (WebDriver): The WebDriver instance.
+        driver (WebDriver): A instância WebDriver.
 
     Asserts:
-        The title should be "Validador de schema excel". If the title is not the expected, the test will fail.
+        O título deve ser "Validador de schema excel". Se o título não for o esperado, o teste falhará.
     """
-    # Verify if the page opens
+    # Verifica se a página abre
     driver.get("http://localhost:8501")
-    # Verify if the page's title is
+    # Verifica se o título da página é correto
     sleep(2)
-    # Capture the page's title
+    # Captura o título da página
     page_title = driver.title
 
-    # Verify if the page's title is the expected
-    expected_title = (
-        "Validador de schema excel"  # Replace with the actual expected title
-    )
+    # Verifica se o título da página é o esperado
+    expected_title = "Validador de schema excel"  # Substitua pelo título esperado
     assert page_title == expected_title
 
 
 def test_check_streamlit_h1(driver: WebDriver):
-    """Test if the h1 is correct.
+    """Testa se o h1 da página está correto.
 
-    This test verifies if the h1 of the page is correct.
+    Este teste verifica se o h1 da página está correto.
 
     Args:
-        driver (WebDriver): The WebDriver instance.
+        driver (WebDriver): A instância WebDriver.
 
     Asserts:
-        The h1 should be "Insira o seu excel para validação.". If the h1 is not the expected, the test will fail.
+        O h1 deve ser "Insira o seu excel para validação.". Se o h1 não for o esperado, o teste falhará.
     """
-    # Verify if the page opens
+    # Verifica se a página abre
     driver.get("http://localhost:8501")
-    # Verify if the page's title is
+    # Aguarda a página carregar
     sleep(2)
-    # Capture the h1 page's title (<h1></h1>)
+    # Captura o elemento h1 da página
     h1_element = driver.find_element(By.TAG_NAME, "h1")
 
-    # Verify if the h1 page's title is the expected
+    # Verifica se o h1 da página é o esperado
     expected_element = (
-        "Insira o seu excel para validação."  # Replace with the actual expected title
+        "Insira o seu excel para validação."  # Substitua pelo elemento esperado
     )
     assert h1_element.text == expected_element
 
 
 def test_check_user_can_insert_a_excel_and_receive_a_message(driver: WebDriver):
-    """Test if the user can insert a excel and receive a message.
+    """Testa se o usuário pode inserir um excel e receber uma mensagem.
 
-    This test verifies if the user can insert a excel and receive a message.
+    Este teste verifica se o usuário pode inserir um arquivo Excel e receber uma mensagem.
 
     Args:
-        driver (WebDriver): The WebDriver instance.
+        driver (WebDriver): A instância WebDriver.
 
     Asserts:
-        The message "O schema do arquivo Excel está correto!" should be displayed. If the message is not displayed, the test will fail.
+        A mensagem "O schema do arquivo Excel está correto!" deve ser exibida na página. Se a mensagem não for exibida, o teste falhará.
     """
 
-    # Verify if the page opens
+    # Abre a página
     driver.get("http://localhost:8501")
 
     sleep(3)
 
-    # Upload the file successfully
+    # Envia o arquivo
     success_file_path = os.path.abspath("data/file.xlsx")
     driver.find_element(By.CSS_SELECTOR, 'input[type="file"]').send_keys(
         success_file_path
     )
 
-    # Aguardar a mensagem de sucesso
+    # Aguarda a página carregar
     sleep(3)
     assert "O schema do arquivo Excel está correto!" in driver.page_source

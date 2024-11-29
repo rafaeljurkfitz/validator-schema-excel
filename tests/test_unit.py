@@ -1,4 +1,4 @@
-""" This module contains the unit tests for the Sales class."""
+""" Testes unitários para o módulo principal do programa. """
 
 from datetime import datetime
 
@@ -8,14 +8,13 @@ from pydantic import ValidationError
 from app.contract import Sales
 
 
-# Test with valid data
 def test_sales_with_valid_data():
-    """Test the Sales class with valid data.
+    """Testa a classe Sales com dados válidos.
 
-    This test verifies if the Sales class can be instantiated with valid data.
+    Este teste verifica se a classe Sales é instanciada com os atributos corretos.
 
     Asserts:
-        The Sales class should be instantiated with the following attributes:
+        A classe Sales deve ser instânciada com os seguintes atributos:
             email
             data
             valor
@@ -24,7 +23,7 @@ def test_sales_with_valid_data():
             categoria
 
     Raises:
-        AssertionError: If the Sales class is not instantiated with valid data.
+        AssertionError: Se a classe Sales não for instanciada com os atributos corretos.
     """
     data_valid = {
         "email": "comprador@example.com",
@@ -35,8 +34,8 @@ def test_sales_with_valid_data():
         "categoria": "categoria3",
     }
 
-    # The **data_valid syntax is a way of unpacking dectionaries in Python.
-    # What this does is pass the key-value pairs in the valid_data dictionary as named arguments to the constructor of the Sales class.
+    # A sintaxe **data_valid é o caminho para desempacotar dicionários no Python.
+    # Isso permite passar os valores do dicionário como argumentos nomeados.
 
     sale = Sales(**data_valid)
 
@@ -48,14 +47,13 @@ def test_sales_with_valid_data():
     assert sale.categoria == data_valid["categoria"]
 
 
-# Test with invalid data
 def test_sales_with_invalid_data():
-    """Test the Sales class with invalid data.
+    """Testa a classe Sales com dados inválidos.
 
-    This test verifies if the Sales class raises a ValidationError when instantiated with invalid data.
+    Este teste verifica se a classe Sales é instanciada com dados inválidos.
 
     Raises:
-        ValidationError: If the Sales class is instantiated with invalid data.
+        ValidationError: Se a classe Sales for instanciada com dados válidos.
     """
     data_invalid = {
         "email": "comprador",
@@ -70,14 +68,13 @@ def test_sales_with_invalid_data():
         Sales(**data_invalid)
 
 
-# Category Validation Test
 def test_category_validation():
-    """Test the category validation.
+    """Testa a validação da categoria.
 
-    This test verifies if the Sales class raises a ValidationError when instantiated with an invalid category.
+    Este teste verifica se a classe Sales é instanciada com uma categoria válida.
 
     Raises:
-        ValidationError: If the Sales class is instantiated with an invalid category.
+        ValidationError: Se a classe Sales for instanciada com uma categoria inválida.
     """
     data = {
         "email": "comprador@example.com",
