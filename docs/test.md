@@ -1,13 +1,13 @@
-# Tests
+# Testes
 
-## Integration
+## Testes de Integração
 
 ::: tests.test_integration
 
-## Function
+## Testes Funcionais
 
 ::: tests.test_app
 
-## Unit
+## Testes Unitarios
 
 ::: tests.test_unit

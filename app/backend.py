@@ -63,9 +63,6 @@ def save_dataframe_to_sql(df: pd.DataFrame) -> None:
 
     Args:
         df (pd.DataFrame): DataFrame a ser salvo no banco de dados.
-
-    Returns:
-        None
     """
     # Salva o DataFrame no banco de dados
     df.to_sql("sales", con=DATABASE_URL, if_exists="replace", index=False)

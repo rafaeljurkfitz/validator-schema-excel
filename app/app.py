@@ -12,12 +12,12 @@ load_dotenv(".env")
 
 sentry_sdk.init(
     dsn=os.getenv("SENTRY_DNS"),
-    # * Set traces_sample_rate to 1.0 to capture 100%
-    # * of transactions for performance monitoring.
+    # * Define o traces_sample_rate para 1.0 para capturar 100%
+    # * das transações de monitoramento de performance.
     traces_sample_rate=1.0,
-    # * Set profiles_sample_rate to 1.0 to profile 100%
-    # * of sampled transactions.
-    # * We recommend adjusting this value in production.
+    # * Define o profiles_sample_rate para 1.0 para perfilar 100%
+    # * das transações de amostras.
+    # * É recomendado ajustar esses valores em produção, não é necessário capturar todas, pois pode ser custoso.
     profiles_sample_rate=1.0,
 )
 
@@ -44,13 +44,13 @@ def main():
         if errors:
             ui.display_wrong_message()
             sentry_sdk.capture_message("Erro ao subir excel")
-            logging.error("Test error excel")
+            logging.error("Teste erro excel")
         elif ui.display_save_button():
             # Se não houver erros e o botão for exibido, exibir o botão e fazer o log
             save_dataframe_to_sql(df)
             ui.display_success_message()
             sentry_sdk.capture_message("Banco de dados foi atualizado")
-            logging.info("Test sucess excel")
+            logging.info("Teste sucesso excel")
 
 
 if __name__ == "__main__":
