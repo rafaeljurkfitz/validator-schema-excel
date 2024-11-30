@@ -56,7 +56,7 @@ def test_check_title_is(driver: WebDriver):
         driver (WebDriver): The WebDriver instance.
 
     Asserts:
-        The title should be "Validador de schema excel". If the title is not the expected, the test will fail.
+        The title should be "Validador Schema Excel". If the title is not the expected, the test will fail.
     """
     # Verify if the page opens
     driver.get("http://localhost:8501")
@@ -66,9 +66,7 @@ def test_check_title_is(driver: WebDriver):
     page_title = driver.title
 
     # Verify if the page's title is the expected
-    expected_title = (
-        "Validador de schema excel"  # Replace with the actual expected title
-    )
+    expected_title = "Validador Schema Excel"  # Replace with the actual expected title
     assert page_title == expected_title
 
 
@@ -81,7 +79,7 @@ def test_check_streamlit_h1(driver: WebDriver):
         driver (WebDriver): The WebDriver instance.
 
     Asserts:
-        The h1 should be "Insira o seu excel para validação.". If the h1 is not the expected, the test will fail.
+        The h1 should be "Insert here your Excel for validation.". If the h1 is not the expected, the test will fail.
     """
     # Verify if the page opens
     driver.get("http://localhost:8501")
@@ -91,9 +89,7 @@ def test_check_streamlit_h1(driver: WebDriver):
     h1_element = driver.find_element(By.TAG_NAME, "h1")
 
     # Verify if the h1 page's title is the expected
-    expected_element = (
-        "Insira o seu excel para validação."  # Replace with the actual expected title
-    )
+    expected_element = "Insert here your Excel for validation."  # Replace with the actual expected title
     assert h1_element.text == expected_element
 
 
@@ -106,7 +102,7 @@ def test_check_user_can_insert_a_excel_and_receive_a_message(driver: WebDriver):
         driver (WebDriver): The WebDriver instance.
 
     Asserts:
-        The message "O schema do arquivo Excel está correto!" should be displayed. If the message is not displayed, the test will fail.
+        The message "Data saved successfully." should be displayed. If the message is not displayed, the test will fail.
     """
 
     # Verify if the page opens
@@ -120,6 +116,6 @@ def test_check_user_can_insert_a_excel_and_receive_a_message(driver: WebDriver):
         success_file_path
     )
 
-    # Aguardar a mensagem de sucesso
+    # Wait for the message to be displayed
     sleep(3)
-    assert "O schema do arquivo Excel está correto!" in driver.page_source
+    assert "Data saved successfully." in driver.page_source

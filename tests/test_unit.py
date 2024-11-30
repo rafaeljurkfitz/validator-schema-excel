@@ -17,22 +17,22 @@ def test_sales_with_valid_data():
     Asserts:
         The Sales class should be instantiated with the following attributes:
             email
-            data
-            valor
-            produto
-            quantidade
-            categoria
+            date
+            value
+            product
+            quantity
+            category
 
     Raises:
         AssertionError: If the Sales class is not instantiated with valid data.
     """
     data_valid = {
         "email": "comprador@example.com",
-        "data": datetime.now(),
-        "valor": 100.50,
-        "produto": "Produto X",
-        "quantidade": 3,
-        "categoria": "categoria3",
+        "date": datetime.now(),
+        "value": 100.50,
+        "product": "product X",
+        "quantity": 3,
+        "category": "category3",
     }
 
     # The **data_valid syntax is a way of unpacking dectionaries in Python.
@@ -41,11 +41,11 @@ def test_sales_with_valid_data():
     sale = Sales(**data_valid)
 
     assert sale.email == data_valid["email"]
-    assert sale.data == data_valid["data"]
-    assert sale.valor == data_valid["valor"]
-    assert sale.produto == data_valid["produto"]
-    assert sale.quantidade == data_valid["quantidade"]
-    assert sale.categoria == data_valid["categoria"]
+    assert sale.data == data_valid["date"]
+    assert sale.value == data_valid["value"]
+    assert sale.product == data_valid["product"]
+    assert sale.quantity == data_valid["quantity"]
+    assert sale.category == data_valid["category"]
 
 
 # Test with invalid data
@@ -58,12 +58,12 @@ def test_sales_with_invalid_data():
         ValidationError: If the Sales class is instantiated with invalid data.
     """
     data_invalid = {
-        "email": "comprador",
-        "data": "não é uma data",
-        "valor": -100,
-        "produto": "",
-        "quantidade": -1,
-        "categoria": "categoria3",
+        "email": "buyer",
+        "data": "its not a datetime valid",
+        "value": -100,
+        "product": "",
+        "quantity": -1,
+        "category": "category3",
     }
 
     with pytest.raises(ValidationError):
@@ -82,10 +82,10 @@ def test_category_validation():
     data = {
         "email": "comprador@example.com",
         "data": datetime.now(),
-        "valor": 100.50,
-        "produto": "Produto Y",
-        "quantidade": 1,
-        "categoria": "categoria inexistente",
+        "value": 100.50,
+        "product": "product Y",
+        "quantity": 1,
+        "category": "category invalid",
     }
 
     with pytest.raises(ValidationError):
