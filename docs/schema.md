@@ -2,4 +2,4 @@
 
 ::: app.contract.Sales
 
-::: app.contract.CategoriaEnum
+::: app.contract.CategoryEnum
