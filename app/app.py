@@ -1,4 +1,4 @@
-"""Módulo principal do programa."""
+"""Module to run the application."""
 
 import logging
 import os
@@ -23,14 +23,13 @@ sentry_sdk.init(
 
 
 def main():
-    """
-    Função principal que chama a interface gráfica e processa o arquivo excel.
+    """Run the application.
 
-    A função main é responsável por iniciar a execução do programa. Ela chama a classe ```ExcelValidadorUI``` para exibir a interface gráfica, permite ao usuário fazer o upload de um arquivo excel e processa esse arquivo utilizando a função ***process_excel***.
+    The main function initializes the ```ExcelValidadorUI``` class and displays the header. It then calls the upload_file function to upload the Excel file. The function processes the Excel file and validates it against a schema.
 
-    Em seguida, exibe os resultados na interface gráfica e, se não houver erros, permite ao usuário salvar os dados em um banco de dados.
+    It then displays the results in the graphical interface and, if there are no errors, allows the user to save the data to a database.
 
-    A função também registra mensagens de erro ou sucesso utilizando a ```biblioteca sentry_sdk``` e o ```módulo logging```.
+    The function also logs error or success messages using the ```sentry_sdk``` library and the ```logging``` module.
     """
     ui = ExcelValidadorUI()
     ui.display_header()
@@ -43,13 +42,13 @@ def main():
 
         if errors:
             ui.display_wrong_message()
-            sentry_sdk.capture_message("Erro ao subir excel")
+            sentry_sdk.capture_message("Error in the excel")
             logging.error("Test error excel")
         elif ui.display_save_button():
-            # Se não houver erros e o botão for exibido, exibir o botão e fazer o log
+            # Save the data to the database if the user clicks the button to save the data to the database and there are no errors in the Excel file schema validation process.
             save_dataframe_to_sql(df)
             ui.display_success_message()
-            sentry_sdk.capture_message("Banco de dados foi atualizado")
+            sentry_sdk.capture_message("Data saved successfully")
             logging.info("Test sucess excel")
 
 

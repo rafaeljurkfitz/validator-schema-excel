@@ -1,71 +1,73 @@
-"""Frontend da aplicação."""
+"""Frontend of the application."""
 
 import streamlit as st
 
 
 class ExcelValidadorUI:
-    """Classe responsável por exibir a interface gráfica da aplicação."""
+    """Class to define the frontend of the application."""
 
     def __init__(self):
-        """Inicializa a classe ExcelValidadorUI.
+        """Initialize the ExcelValidadorUI class.
 
-        A função __init__ é responsável por inicializar a classe ExcelValidadorUI e chamar a função set_page_config para configurar a página.
+        The function __init__ Initialize the ExcelValidadorUI class, setting the page configuration.
         """
         self.set_page_config()
 
     def set_page_config(self):
-        """Configura a página do Streamlit.
+        """Set the page configuration.
 
-        A função set_page_config é responsável por configurar a página do Streamlit, definindo o título da página.
+        The function set_page_config is responsible for setting the page configuration of the application.
         """
-        st.set_page_config(page_title="Validador de schema excel")
+        st.set_page_config(page_title="Validador Schema Excel")
 
     def display_header(self):
-        """Exibe o cabeçalho da aplicação.
+        """Display the header of the application.
 
-        A função display_header é responsável por exibir o cabeçalho da aplicação, com o título da aplicação.
+        The function display_header is responsible for displaying the header of the application.
         """
-        st.title("Insira o seu excel para validação.")
+        st.title("Insert here your Excel for validation.")
 
     def upload_file(self):
-        """Exibe o botão de upload de arquivo Excel.
+        """Upload the Excel file.
 
-        A função upload_file é responsável por exibir o botão de upload de arquivo Excel e retornar o arquivo carregado pelo usuário.
+        The function upload_file is responsible for uploading the Excel file to the application. It uses the file_uploader function from the streamlit library.
         """
-        return st.file_uploader("Carregue seu arquivo Excel aqui", type=["xlsx"])
+        return st.file_uploader("Upload your Excel file here", type=["xlsx"])
 
     def display_results(self, result, errors):
-        """Exibe o resultado da validação do arquivo Excel.
+        """Display the validation results.
 
-        A função display_results é responsável por exibir o resultado da validação do arquivo Excel, exibindo uma mensagem de erro ou sucesso.
+        The function display_results is responsible for displaying the validation results on the screen.
 
         Args:
-            result (bool): Resultado da validação.
-            errors (List[str]): Lista de erros encontrados na validação.
+            result (bool): Result of the validation.
+            errors (List[str]): List of errors found during the validation.
         """
         if errors:
             for error in errors:
-                st.error(f"Erro na validação: {error}")
+                st.error(f"Validation error: {error}")
         else:
-            st.success("O schema do arquivo Excel está correto!")
+            st.success("The Excel file schema is correct!")
 
     def display_save_button(self):
-        """Exibe o botão para salvar no banco de dados.
+        """Display the save button.
 
-        A função display_save_button é responsável por exibir o botão para salvar os dados no banco de dados.
+        The function display_save_button is responsible for displaying the save button on the screen.
         """
-        return st.button("Salvar no Banco de Dados")
+        return st.button("Save data to the database")
 
     def display_wrong_message(self):
-        """Exibe uma mensagem de erro.
+        """Show an error message.
 
-        A função display_wrong_message é responsável por exibir uma mensagem de erro na tela.
+        The function display_wrong_message is responsible for displaying an error message on the screen.
         """
-        return st.error("Necessário corrigir a planilha!")
+        return st.error(
+            "Error in the Excel file. Please check the schema. And upload the correct file again."
+        )
 
     def display_success_message(self):
-        """Exibe uma mensagem de sucesso.
+        """Show a success message.
 
-        A função display_success_message é responsável por exibir uma mensagem de sucesso na tela.
+        The function display_success_message is responsible for displaying a success message on the screen.
         """
-        return st.success("Dados salvos com sucesso no banco de dados!")
+        return st.success("Data saved successfully.")

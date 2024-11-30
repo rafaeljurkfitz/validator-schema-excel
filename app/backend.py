@@ -1,4 +1,4 @@
-"""Módulo responsável por processar o arquivo Excel e salvar no banco de dados."""
+"""Módulo to process the Excel file and save the data to the database."""
 
 import os
 
@@ -8,64 +8,62 @@ from dotenv import load_dotenv
 
 load_dotenv(".env")
 
-# Lê as variáveis de ambiente
 POSTGRES_USER = os.getenv("POSTGRES_USER")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 POSTGRES_HOST = os.getenv("POSTGRES_HOST")
 POSTGRES_PORT = os.getenv("POSTGRES_PORT")
 POSTGRES_DB = os.getenv("POSTGRES_DB")
 
-# Cria a URL de conexão com o banco de dados
+# Create the connection URL to the database
 DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
 
-# Carrega as variáveis de ambiente
+# Load the environment variables
 load_dotenv()
 
 
-def process_excel(uploaded_file: any) -> dict:
-    """Processa o arquivo Excel e retorna o DataFrame com os dados, o resultado da validação e os erros encontrados.
+def process_excel(uploaded_file) -> tuple:
+    """Process the Excel file and validate it against a schema.
 
     Args:
-        uploaded_file (str): Caminho do arquivo Excel a ser processado.
+        uploaded_file (str): The uploaded Excel file.
 
     Returns:
-        `dict`:
-            dataframe (pd.DataFrame): Um DataFrame pandas contendo os dados do arquivo Excel.
-            validacao_sucedida (bool): Um booleano indicando se a validação foi bem-sucedida.
-            erros (List[str]): Uma lista de strings contendo os erros encontrados durante a validação.
+        tuple: ```A tuple containing the DataFrame, the validation result, and the errors.```
+        dataframe (pd.DataFrame): The DataFrame containing the data from the Excel file.
+        response_validation (bool): The result of the validation.
+        erros (List[str]): The list of errors found during the validation.
     """
     try:
         df = pd.read_excel(uploaded_file)
         errors = []
 
-        # Verificar se há colunas extras no DataFrame
+        # Check if the columns in the Excel file match the schema
         extra_cols = set(df.columns) - set(Sales.model_fields.keys())
         if extra_cols:
-            return False, f"Colunas extras detectadas no Excel: {', '.join(extra_cols)}"
+            return False, f"Extra columns blocked in Excel: {', '.join(extra_cols)}"
 
-        # Validar cada linha com o schema escolhido
+        # Check if the data types in the Excel file match the schema
         for index, row in df.iterrows():
             try:
                 _ = Sales(**row.to_dict())
             except Exception as e:
-                errors.append(f"Erro na linha {index + 2}: {e}")
+                errors.append(f"Line error {index + 2}: {e}")
 
-        # Retorna tanto o resultado da validação, os erros, quanto o DataFrame
         return df, True, errors
 
     except Exception as e:
-        # Se houver exceção, retorna o erro e um DataFrame vazio
-        return pd.DataFrame(), f"Erro inesperado: {str(e)}"
+        # Return an empty DataFrame and the error message
+        return pd.DataFrame(), f"Unexpected error: {str(e)}"
 
 
 def save_dataframe_to_sql(df: pd.DataFrame) -> None:
-    """Salva o DataFrame no banco de dados.
+    """Save the DataFrame to the database.
 
     Args:
-        df (pd.DataFrame): DataFrame a ser salvo no banco de dados.
+        df (pd.DataFrame): The DataFrame to be saved to the database.
 
     Returns:
         None
     """
-    # Salva o DataFrame no banco de dados
+    # Save the DataFrame to the database
     df.to_sql("sales", con=DATABASE_URL, if_exists="replace", index=False)

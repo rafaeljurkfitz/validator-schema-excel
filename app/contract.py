@@ -1,4 +1,4 @@
-"""Módulo responsável por definir os contratos de dados da aplicação."""
+"""Module to define schemas and models for the application."""
 
 from datetime import datetime
 from enum import Enum
@@ -6,48 +6,47 @@ from enum import Enum
 from pydantic import BaseModel, EmailStr, PositiveFloat, PositiveInt, field_validator
 
 
-class CategoriaEnum(str, Enum):
-    """Enum para as categorias dos produtos.
+class CategoryEnum(str, Enum):
+    """Enum for the product category.
 
-    Args:
-        categoria1 (str): Categoria 1
-        categoria2 (str): Categoria 2
-        categoria3 (str): Categoria 3
+    Attributes:
+        category1 (str): categoria1
+        category2 (str): categoria2
+        category3 (str): categoria3
     """
 
-    categoria1 = "categoria1"
-    categoria2 = "categoria2"
-    categoria3 = "categoria3"
+    category1 = "categoria1"
+    category2 = "categoria2"
+    category3 = "categoria3"
 
 
 class Sales(BaseModel):
-    """
-    Modelo de dados para as vendas.
+    """Schema for the sales date.
 
-    Args:
-        email (EmailStr): email do comprador
-        data (datetime): data da compra
-        valor (PositiveFloat): valor da compra
-        quantidade (PositiveInt): quantidade de produtos
-        produto (str): nome do produto
-        categoria (str): categoria do produto Enum(categoria1, categoria2, categoria3)
+    Attributes:
+        email (EmailStr): buyer's email
+        date (datetime): date of the purchase
+        value (PositiveFloat): purchase value
+        quantity (PositiveInt): quantity of products
+        product (str): product name
+        category (str): product category(enum)
     """
 
     email: EmailStr
-    data: datetime
-    valor: PositiveFloat
-    quantidade: PositiveInt
-    produto: str
-    categoria: CategoriaEnum
+    date: datetime
+    value: PositiveFloat
+    quantity: PositiveInt
+    product: str
+    category: CategoryEnum
 
-    @field_validator("categoria")
-    def categoria_deve_estar_no_enum(cls: type, error: str) -> str:
-        """Valida se a categoria está no Enum.
+    @field_validator("category")
+    def Category_must_have_in_enum(cls: type, error: str) -> str:
+        """Validate if the category is in the enum.
 
         Args:
-            error (str): Mensagem de erro.
+            error (str): Error message.
 
         Returns:
-            str: Mensagem de erro.
+            str: Error message.
         """
         return error
