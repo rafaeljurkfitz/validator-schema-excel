@@ -1,8 +1,8 @@
 # Validator-schema-excel
 
-![Texto alternativo da imagem](static/home.png)
+![Image Alt Text](static/home.png)
 
-Este é um projeto em Python que oferece uma aplicação web usando Streamlit como frontend, um backend para validar arquivos Excel com base em um esquema predefinido e salvar em banco de dados.
+This is a Python project that provides a web application using Streamlit as the frontend, a backend for validating Excel files based on a predefined schema, and saving the data to a database.
 
 ## Deploy
 
@@ -10,26 +10,26 @@ Este é um projeto em Python que oferece uma aplicação web usando Streamlit co
 
 ## Database
 
-Foi usado uma instância `PostgreSQL` na cloud. Banco de dados utilizado para armazenar os dados validados, hospedado gratuitamente na [Render](https://render.com/).
+A cloud-based `PostgreSQL` instance was used as the database to store validated data. It is hosted for free on [Render](https://render.com/).
 
-## Funcionalidades Principais
+## Main Features
 
-- **Frontend Intuitivo**: Utiliza o framework `Streamlit` para fornecer uma interface web amigável e bonita. É Fácil e rápido de construir para qualquer tipo de desenvolvedor, além de possibilitar um deploy sem custos.
-- **Validação de Arquivos Excel**: Permite aos usuários carregar arquivos Excel e valida-os em conformidade com um schema predefinido no projeto.
-- **Salvamento Seguro de Dados**: Se os dados no arquivo passarem pela validação com sucesso, são salvos com segurança para posterior processamento dentro do banco de dados.
+- **Intuitive Frontend**: Uses the `Streamlit` framework to provide a user-friendly and visually appealing web interface. It's easy and fast to build for any type of developer and allows for cost-free deployment.
+- **Excel File Validation**: Enables users to upload Excel files and validates them against a predefined schema in the project.
+- **Secure Data Saving**: If the file's data passes validation, it is securely saved for further processing in the database.
 
-## Principais Tecnologias Utilizadas
+## Main Technologies
 
-- Python: Linguagem de programação principal para desenvolvimento do backend e lógica de validação.
-- Streamlit: Utilizado para criar o frontend web interativo.
-- Pandas: Biblioteca utilizada para manipulação de dados no formato Excel.
-- Pytest: Utilizado para executar testes de integração, unitários e funcionais da aplicação.
-- [Sentry.io](https://render.com/): Fornece a observabilidade do logging do projeto. O Sentry permite o monitoramento proativo de erros e exceções em tempo real, fornecendo insights valiosos sobre o desempenho e a estabilidade da aplicação.
+- Python: Main programming language for backend development and validation logic.
+- Streamlit: Used to create the interactive web frontend.
+- Pandas: Library used for manipulating data in Excel format.
+- Pytest: Used to run integration, unit, and functional tests for the application.
+- [Sentry.io](https://sentry.io/): Provides observability for project logging. Sentry allows proactive monitoring of errors and exceptions in real-time, delivering valuable insights into application performance and stability.
 
-## Contribuição
+## Contribution
 
-Contribuições são bem-vindas! Se você deseja melhorar este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+Contributions are welcome! If you'd like to improve this project, feel free to open an issue or submit a pull request.
 
-## Licença
+## License
 
-Este projeto é licenciado sob a MIT License.
+This project is licensed under the MIT License.
